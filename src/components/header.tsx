@@ -1,6 +1,8 @@
 import React, { FC, FunctionComponent, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AuthContext } from '../context/authContext'
+import { getDate } from '../screens/add_status/addStatus'
+import { baseUrl } from '../utils/const'
 
 
 export const Header: FunctionComponent = (props) => {
@@ -14,8 +16,6 @@ export const Header: FunctionComponent = (props) => {
     if (context !== null) {
 
         let { user, logoutUser } = context
-
-        console.log(user)
 
         let homeActive = location.pathname === '/' ? 'active' : ''
         let addActive = location.pathname === '/add' ? 'active' : ''
@@ -38,9 +38,8 @@ export const Header: FunctionComponent = (props) => {
                                         <li className="nav-item">
                                             <Link className={"nav-link " + addActive} aria-current="page" to="/add">Add</Link>
                                         </li>
-                                        <li className="nav-item">
-                                            <button className={"nav-link " + addActive} aria-current="page" >Slack</button>
-                                        </li>
+                                        <a className="nav-link" target="_blank" rel="noopener noreferrer" href={`${baseUrl}/slack-dev-status/${getDate()}`}>Slack</a>
+
                                     </ul>
                                 </div>
                             </div>

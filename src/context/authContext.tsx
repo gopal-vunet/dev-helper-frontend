@@ -33,8 +33,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 body,
             )
 
-            console.log('response')
-
             if (response.status === 200) {
                 let data = response.data
                 setAuthTokens(data)

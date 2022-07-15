@@ -15,7 +15,6 @@ export const HomePage: FunctionComponent = () => {
     useLayoutEffect(() => {
         axios.get(`${baseUrl}/developers/`).then((response) => {
             if (response.status === 200) {
-                console.log(response.data)
                 setDevelopers(response.data)
             }
         })
@@ -66,7 +65,7 @@ export const HomePage: FunctionComponent = () => {
 
                         <div className="card mt-4">
                             <ul className=" list-group list-group-flush">
-                                {developers.map((dev) => <li className="list-group-item">{dev.id} - {dev.name} - {dev.role}</li>)}
+                                {developers.map((dev) => <li key={dev.id} className="list-group-item">{dev.id} - {dev.name} - {dev.role}</li>)}
                             </ul>
                         </div>
 
