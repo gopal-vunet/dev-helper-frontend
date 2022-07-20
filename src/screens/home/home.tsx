@@ -115,7 +115,7 @@ export const HomePage: FunctionComponent = () => {
                                         <input onClick={(e) => toggleFilter('wfh')} type="button" className={`btn btn${filters.includes('wfh') ? '-secondary' : '-outline-secondary'}`} id="wfh" autoComplete="off" value="WFH" />
                                         {/* <label className={`btn btn${filters.includes('wfh') ? '-secondary' : '-outline-secondary'}`} htmlFor="wfh">WFH</label> */}
 
-                                        <input onClick={(e) => toggleFilter('wfo')} type="button" className={`btn btn${filters.includes('wfo') ? '-secondary' : '-outline-secondary'}`} id="wfo" autoComplete="off" value="WFO"/>
+                                        <input onClick={(e) => toggleFilter('wfo')} type="button" className={`btn btn${filters.includes('wfo') ? '-secondary' : '-outline-secondary'}`} id="wfo" autoComplete="off" value="WFO" />
                                         {/* <label className={`btn btn${filters.includes('wfo') ? '-secondary' : '-outline-secondary'}`} htmlFor="wfo">WFO</label> */}
 
                                         <input onClick={(e) => toggleFilter('leave')} type="button" className={`btn btn${filters.includes('leave') ? '-secondary' : '-outline-secondary'}`} id="leave" autoComplete="off" value="LEAVE" />
@@ -156,13 +156,18 @@ export const HomePage: FunctionComponent = () => {
 
                             {developers.length === 0
                                 ? <p> No developers found</p>
-                                : <>
-                                    <div className="card mt-4">
-                                        <ul className=" list-group list-group-flush">
-                                            {developers.map((dev) => <li key={dev.id} className="list-group-item"><Link to={'/add/' + dev.id}> {dev.id} - {dev.name} </Link> - {dev.role}</li>)}
-                                        </ul>
+                                : reloading
+
+                                    ? <div style={{ maxWidth: 700, minWidth: 450, minHeight: 250 }} className="card p-4">
+                                        <span className="spinner-border spinner-border mx-auto my-auto" role="status" aria-hidden="true"></span>
                                     </div>
-                                </>
+                                    : <>
+                                        <div className="card mt-4">
+                                            <ul className=" list-group list-group-flush">
+                                                {developers.map((dev) => <li key={dev.id} className="list-group-item"><Link to={'/add/' + dev.id}> {dev.id} - {dev.name} </Link> - {dev.role}</li>)}
+                                            </ul>
+                                        </div>
+                                    </>
                             }
                         </>
                     }
