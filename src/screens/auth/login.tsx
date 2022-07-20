@@ -9,7 +9,6 @@ export const Login: FunctionComponent = (props) => {
     if (context != null) {
         const { loginUser } = context
         return (
-
             <div className="container d-flex justify-content-center mt-4">
                 <form onSubmit={(e) => loginUser(e, state)}>
                     <div className="mb-3">

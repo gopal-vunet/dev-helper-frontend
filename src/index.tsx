@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -7,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AddStatus } from './screens/add_status/addStatus';
 import { Login } from './screens/auth/login';
 import { AuthProvider } from './context/authContext';
-import { ProtectedRoute, RequireAuth } from './context/protectedRoute';
+import { RequireAuth } from './context/protectedRoute';
 import { Header } from './components/header';
 
 const root = ReactDOM.createRoot(
@@ -20,6 +19,7 @@ root.render(
       <Routes>
         <Route path='/' element={<RequireAuth children={<HomePage />} />} />
         <Route path='/add' element={<RequireAuth children={<AddStatus />} />} />
+        <Route path='/add/:devId' element={<RequireAuth children={<AddStatus />} />} />
         <Route path='/login' element={<Login />} />
       </Routes>
     </AuthProvider>

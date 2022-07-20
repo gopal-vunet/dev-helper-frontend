@@ -4,40 +4,6 @@ import { AuthContext } from './authContext';
 
 import {Route, useLocation} from 'react-router'
 
-
-
-export type Props = {
-    children?: ReactNode
-} & RouteProps
-
-// export const ProtectedRoute = ({component, ...rest}: any) => {
-
-//     let context = useContext(AuthContext)
-
-//     const routeComponent = (props: any) => (
-//         context != null
-//             ? createElement(component, props)
-//             : <Navigate to={{pathname: '/login'}}/>
-//     );
-//     return <Route {...rest} render={routeComponent}/>;
-// };
-
-
-export const ProtectedRoute  = ({ children, ...rest } : Props) => {
-    let context = useContext(AuthContext)
-
-    if(context != null){
-        let { user } = context 
-        return (
-            <Route {...rest}>{ <Navigate to="/login" />}</Route>
-        )
-    }
-
-    return (
-        <Route {...rest}>{children}</Route>
-    )
-}
-
 export function RequireAuth({ children }: { children: JSX.Element }) {
     let location = useLocation();
     let context = useContext(AuthContext)
